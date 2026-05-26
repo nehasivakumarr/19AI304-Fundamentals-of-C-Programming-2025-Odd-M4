@@ -41,7 +41,48 @@
 ### Step 14: 
   Stop
 # Program:
+```
+#include<stdio.h>
+
+void validateDate(){
+    int dd, mm, yy;
+    scanf("%d/%d/%d", &dd, &mm, &yy);
+
+    if(yy < 1900 || yy > 9999){
+        printf("Year is not valid\n");
+        return;
+    }
+
+    if(mm < 1 || mm > 12){
+        printf("Month is not valid\n");
+        return;
+    }
+
+    int isValid = 0;
+
+    if(mm == 1 || mm == 3 || mm == 5 || mm == 7 || mm == 8 || mm == 10 || mm == 12){
+        if(dd >= 1 && dd <= 31) isValid = 1;
+    } else if(mm == 4 || mm == 6 || mm == 9 || mm == 11){
+        if(dd >= 1 && dd <= 30) isValid = 1;
+    } else if(mm == 2){
+        if(dd >= 1 && dd <= 28) isValid = 1;
+        else if(dd == 29 && ((yy % 4 == 0 && yy % 100 != 0) || (yy % 400 == 0))) isValid = 1;
+    }
+
+    if(isValid)
+        printf("Date is valid.\n");
+    else
+        printf("Date is invalid.\n");
+}
+
+int main(){
+    validateDate();
+    return 0;
+}
+```
 # Output:
+<img width="309" height="79" alt="image" src="https://github.com/user-attachments/assets/8f01b811-f89f-4bf2-92f3-71620d531e59" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -89,7 +130,48 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 13: 
   Stop
 # Program:
+```
+#include <stdio.h>
+
+// Function to find maximum
+int max(int num1, int num2) {
+    if (num1 > num2)
+        return num1;
+    else
+        return num2;
+}
+
+// Function to find minimum
+int min(int num1, int num2) {
+    if (num1 > num2)
+        return num2;
+    else
+        return num1;
+}
+
+int main() {
+    int num1, num2, maximum, minimum;
+
+    // Step 4: Ask user for input
+    printf("Enter two numbers: ");
+    scanf("%d %d", &num1, &num2);
+
+    // Step 6 & 8: Call max() and store result
+    maximum = max(num1, num2);
+
+    // Step 9 & 11: Call min() and store result
+    minimum = min(num1, num2);
+
+    // Step 12: Display results
+    printf("Maximum = %d\n", maximum);
+    printf("Minimum = %d\n", minimum);
+
+    return 0;
+}
+```
 # Output:
+<img width="282" height="144" alt="image" src="https://github.com/user-attachments/assets/d29f6257-0b0e-44e2-81c3-4b1270be2b89" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -137,7 +219,46 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11: 
  Stop
 # Program:
+```
+#include <stdio.h>
+
+float celtof();
+float ftocel();
+
+int main()
+{
+    float f, c;
+
+    f = celtof();
+    printf("Fahrenheit value: %.2f", f);
+
+    c = ftocel();
+    printf("Celsius value: %.2f", c);
+
+    return 0;
+}
+
+float celtof()
+{
+    float C, F;
+    printf("Enter the temperature in Celsius: ");
+    scanf("%f", &C);
+    F = (C * 9 / 5) + 32;
+    return F;
+}
+
+float ftocel()
+{
+    float f, celsius;
+    printf("\nEnter the temperature in Fahrenheit: ");
+    scanf("%f", &f);
+    celsius = (f - 32) * 5 / 9;
+    return celsius;
+}
+```
 # Output:
+<img width="479" height="137" alt="image" src="https://github.com/user-attachments/assets/d910919d-38bd-4581-acd2-8e144ee62ed8" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -185,7 +306,68 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 7: 
   Stop
 # Program:
+```
+#include <stdio.h>
+
+// Step 3: Define constants
+#define R 4
+#define C 4
+
+// Step 4: Function to print matrix in spiral order
+void spiralPrint(int m, int n, int a[R][C]) {
+    int k = 0; // starting row index
+    int l = 0; // starting column index
+
+    // Step 5: Spiral traversal
+    while (k < m && l < n) {
+        // a. Print the top row
+        for (int i = l; i < n; i++) {
+            printf("%d ", a[k][i]);
+        }
+        k++;
+
+        // b. Print the last column
+        for (int i = k; i < m; i++) {
+            printf("%d ", a[i][n - 1]);
+        }
+        n--;
+
+        // c. Print the bottom row (if any left)
+        if (k < m) {
+            for (int i = n - 1; i >= l; i--) {
+                printf("%d ", a[m - 1][i]);
+            }
+            m--;
+        }
+
+        // d. Print the first column (if any left)
+        if (l < n) {
+            for (int i = m - 1; i >= k; i--) {
+                printf("%d ", a[i][l]);
+            }
+            l++;
+        }
+    }
+}
+
+int main() {
+    // Step 6: Declare and initialize a 4x4 matrix
+    int a[R][C] = {
+        {1, 2, 3, 4},
+        {5, 6, 7, 8},
+        {9, 10, 11, 12},
+        {13, 14, 15, 16}
+    };
+
+    printf("Spiral order traversal of matrix:\n");
+    spiralPrint(R, C, a);
+
+    return 0;
+}
+```
 # Output:
+<img width="608" height="69" alt="image" src="https://github.com/user-attachments/assets/977d4049-701d-4573-950a-c232158183ac" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -220,7 +402,38 @@ To build a C program to convert a string as described above, using a user-define
 ### Step 6: 
  Stop
 # Program:
+```
+#include<stdio.h>
+#include<ctype.h>
+#include<string.h>
+
+void convertFirstCLastC(char str[]){
+    int len = strlen(str);
+    if(len == 0) return;
+
+    str[0] = toupper(str[0]);
+    for(int i = 1; i < len - 1; i++){
+        if(str[i] == ' '){
+            str[i-1] = toupper(str[i-1]);
+            str[i+1] = toupper(str[i+1]);
+        }
+    }
+    str[len-1] = toupper(str[len-1]);
+}
+
+int main(){
+    char str[100];
+    scanf("%[^\n]s", str);
+
+    convertFirstCLastC(str);
+
+    printf("%s\n", str);
+    return 0;
+}
+```
 # Output:
+<img width="290" height="91" alt="image" src="https://github.com/user-attachments/assets/ddd61579-e8be-47db-8063-1b694f14974f" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
